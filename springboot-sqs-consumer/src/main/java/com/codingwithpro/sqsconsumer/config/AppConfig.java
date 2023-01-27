@@ -29,7 +29,7 @@ public class AppConfig {
 		log.info("Region {}", getTargetRegion().getName());
 //		return DefaultAWSCredentialsProviderChain.getInstance();
 		// use datappraise
-		return new ProfileCredentialsProvider("datappraise");
+		return new ProfileCredentialsProvider("");
 	}
 
 	@Bean

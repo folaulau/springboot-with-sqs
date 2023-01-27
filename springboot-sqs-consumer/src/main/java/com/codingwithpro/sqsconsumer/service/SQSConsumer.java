@@ -32,6 +32,12 @@ public class SQSConsumer {
 		log.info("processQueue, queue={} ", msgQueue);
 		int waitingSeconds = 20;
 
+		if (amazonSQS == null) {
+			System.out.println("amazonSQS is null");
+		} else {
+			System.out.println("amazonSQS is not null");
+		}
+
 		String queueUrl = amazonSQS.getQueueUrl(msgQueue).getQueueUrl();
 
 		log.info("queueUrl={}", queueUrl);
