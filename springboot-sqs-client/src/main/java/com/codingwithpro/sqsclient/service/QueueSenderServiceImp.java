@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.amazonaws.services.sqs.AmazonSQS;
@@ -22,7 +23,7 @@ public class QueueSenderServiceImp implements QueueSenderService {
 	@Autowired
 	private AmazonSQS sqs;
 
-	@Autowired
+	@Value("${message-queue}")
 	private String msgQueue;
 
 	@Override

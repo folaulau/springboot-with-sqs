@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Configuration
 public class AppConfig {
-	
+
 	@Value("${targetRegion:us-west-2}")
 	private String targetRegion;
 
@@ -28,7 +28,8 @@ public class AppConfig {
 	public AWSCredentialsProvider amazonAWSCredentials() {
 		log.info("Region {}", getTargetRegion().getName());
 //		return DefaultAWSCredentialsProviderChain.getInstance();
-		return new ProfileCredentialsProvider("");
+		// use datappraise
+		return new ProfileCredentialsProvider("datappraise");
 	}
 
 	@Bean
@@ -39,12 +40,6 @@ public class AppConfig {
 						"sqs." + getTargetRegion().getName() + ".amazonaws.com", getTargetRegion().getName()))
 				.build();
 		return sqs;
-	}
-
-	@Bean(name = "msgQueue")
-	public String msgQueue(@Value("${message-queue}") String msgQueue) {
-		log.debug("msgQueue: {}", msgQueue);
-		return msgQueue;
 	}
 
 }
